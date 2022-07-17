@@ -1,0 +1,22 @@
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        index = 0
+        def compareTo(n1, n2):
+            if str(n1) + str(n2) > str(n2) + str(n1):
+                return False
+            return True
+        while index < len(nums):
+            for i in range(len(nums)):
+                if compareTo(nums[index], nums[i]):
+                    temp = nums[index]
+                    nums.pop(index)
+                    nums.insert(i, temp)
+                    break
+            index+=1
+        finalNum = ""
+        for num in reversed(nums):
+            finalNum += str(num)
+        if int(finalNum) != 0:
+            return finalNum
+        return "0"
+        
