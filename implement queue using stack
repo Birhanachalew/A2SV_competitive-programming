@@ -1,0 +1,29 @@
+class MyQueue:
+
+    def __init__(self):
+        self.main_stack = []
+        self.helper_stack = []
+        
+
+    def push(self, x: int) -> None:
+        self.helper_stack.extend(self.main_stack)
+        self.main_stack[:] = [x]
+        self.main_stack.extend(self.helper_stack)
+        self.helper_stack[:] = []
+            
+        
+    def pop(self) -> int:
+        return self.main_stack.pop()
+        
+
+    def peek(self) -> int:
+        if len(self.main_stack) > 0:
+            return self.main_stack[-1]
+        return None
+
+    def empty(self) -> bool:
+        if len(self.main_stack) > 0:
+            return False
+        return True
+        
+        
