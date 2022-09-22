@@ -1,0 +1,27 @@
+class Solution:
+    def garbageCollection(self, garbage: List[str], travel: List[int]) -> int:
+        count_P,count_M,count_G=0,0,0
+        P_index,M_index,G_index=-1,-1,-1
+        for i in range(len(garbage)):
+            if "P" in garbage[i]:
+                P_index=i
+                count_P+=garbage[i].count("P")
+            if "M" in garbage[i]:
+                M_index=i
+                count_M+=garbage[i].count("M")
+            if "G" in garbage[i]:
+                G_index=i
+                count_G+=garbage[i].count("G")
+        time=[]
+        time.append(0)
+        for i in range (len(travel)):
+            time.append(time[-1]+travel[i])
+        result=0
+        result+=(time[P_index] if P_index!=-1 else 0 )+(time[G_index] if G_index!=-1 else 0)+(time[M_index] if M_index!=-1 else 0 )
+        result+=count_P+count_M+count_G
+        return result
+            
+        #len =4(0-3)
+        """ p_index=2
+            G_index=3"""
+        #0,
