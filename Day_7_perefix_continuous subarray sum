@@ -1,0 +1,15 @@
+class Solution:
+    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+        remainder={0:-1}
+        total=0
+        for i,n in enumerate(nums):
+            total+=n
+            j=total%k
+            if j not in remainder:
+                remainder[j]=i
+            elif i-remainder[j]>1:
+                return True
+        return False
+    #O(n) both time and space
+                
+        
