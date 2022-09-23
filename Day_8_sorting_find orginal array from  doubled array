@@ -1,0 +1,75 @@
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+        c=Counter(changed)
+        if c[0]%2:
+            return []
+        for i in sorted(c):
+            if c[i]>c[2*i]:
+                return []
+            c[2*i]-=c[i] if i else c[i]//2
+        return list(c.elements())
+       
+    
+    
+    
+    
+    
+    
+    """
+        if len(changed)%2!=0:
+        
+            return []
+        changed=sorted(changed)
+        new={}
+        answer=[]
+        for i in changed:
+            if i not in new:
+                new[i]=1
+            else:
+                new[i]+=1
+                
+        for num in changed:
+            double=num*2
+            if num in new and double in new:
+                if num==0 and new[num]>2:
+                    new[num]-=2
+                    answer.append(num)
+                elif num>0 and new[num] and new[double]:
+                    new[num]-=1
+                    new[double]-=1
+                    answer.append(num)
+        if len(changed)//2==len(answer):
+            return answer
+        return []
+                    
+                
+                
+        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                  
+        n=len(changed)
+        data=Counter(changed)
+        if n%2!=0:
+            return []
+        answer=[]
+        for i,j in enumerate(changed):
+            if data[j]>0:
+                if j == 0 and data[0]<2:
+                    return []
+                if j*2 not in data or data[j*2]:
+                    return []
+                data[j]-=1
+                data[j*2]-=1
+                answer.append(j)
+            return answer
+            """
+        
