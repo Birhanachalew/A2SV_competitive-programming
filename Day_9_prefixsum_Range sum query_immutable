@@ -1,0 +1,15 @@
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        self.cumulative=[0]+list(accumulate(nums))
+        
+        
+
+    def sumRange(self, left: int, right: int) -> int:
+        return self.cumulative[right+1]-self.cumulative[left]
+        
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(left,right)
