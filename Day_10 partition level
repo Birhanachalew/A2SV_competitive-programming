@@ -1,0 +1,19 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        last={}
+        for i in range (len(s)):
+            last[s[i]]=i
+        begin=end=0
+        answer=[]
+        for i in range (len(s)):
+            ch=s[i]
+            ch_last=last[ch]
+            if ch_last>end:
+                end=ch_last
+            
+            if i == end:
+                answer.append(end - begin + 1)
+                print(answer)
+                begin = i+1
+            
+        return answer
