@@ -1,0 +1,31 @@
+class Solution:
+    def maxScore(self, cardpoint: List[int], k: int) -> int:
+        
+        result=curentsumm=sum(cardpoint[:k])
+        rightsumm=0
+        for i in range(k):
+            curentsum-=cardpoint[k-1-i]
+            rightsumm+=(cardpoint[-1-i])
+           
+            result=max(result,rightsumm+curentsum)
+        return curentsum
+class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        result=leftsum=sum(cardPoints[:k])
+        rightsum=0
+        for i in range (k):
+            leftsum-=cardPoints[k-1-i]
+            rightsum+=cardPoints[-1-i]
+            result=max(result,rightsum+leftsum)
+        return result
+            
+                    
+            
+        
+        
+        
+            
+            
+   
+            
+        
