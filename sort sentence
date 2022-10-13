@@ -1,0 +1,15 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        birsh=s[::-1]
+        queen=birsh.split()
+        print(queen)
+        queen.sort()
+        print(birsh)
+        print(queen)
+        soft=[]
+        for word in queen:
+            soft.append(word[1:][::-1])
+        return " ".join(soft)
+       
+       
+        
