@@ -1,0 +1,12 @@
+class Solution:
+    def kClosest(self, point: List[List[int]], k: int) -> List[List[int]]:
+        minn=[]
+        answer=[]
+        for x,y in point:
+            dis=x**2+y**2
+            minn.append((dis,[x,y]))
+        minn.sort()
+        for i in range(k):
+            answer.append(minn[i][1])
+        return answer
+            
