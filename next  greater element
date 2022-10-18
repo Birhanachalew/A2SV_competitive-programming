@@ -1,0 +1,19 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        stack = []   #monotonous stack
+        ans = [0]*(len(nums2))    #indices of next greater element
+        ans1 = []   #indices for nums1
+        #traverse nums2 in reverse order
+        for i in range(len(nums2)-1, -1, -1):
+            #kick out any smaller numbers before it, keep descending order
+            while stack != [] and nums2[i]>=stack[-1]:
+                stack.pop(-1)
+            #take the last element in stack, if empty then -1
+            if stack==[]: ans[i] = -1
+            else: ans[i] = stack[-1]
+            stack.append(nums2[i])
+        #traverse nums1, find position in nums2 and extract answer
+        for n in nums1:
+            idx = nums2.index(n)
+            ans1.append(ans[idx])
+        return ans1
