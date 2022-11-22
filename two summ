@@ -1,0 +1,13 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        d={}
+        for i,num in enumerate(nums):
+            sub=target-num
+            if sub in d:
+                return [d[sub],i]
+            d[num]=i
+        
+      
+        
+            
+      
