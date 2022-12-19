@@ -1,0 +1,11 @@
+class Solution:
+    def transpose(self, matrix):
+        return self.transpose_helper([], matrix)
+
+    def transpose_helper(self, matrix, original_matrix):
+        for i in range(len(original_matrix[0])):
+            matrix.append([])
+            for j in range(len(original_matrix)):
+                matrix[i].append(original_matrix[j][i])
+
+        return matrix
