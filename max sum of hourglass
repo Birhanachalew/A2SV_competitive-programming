@@ -1,0 +1,17 @@
+class Solution:
+    def maxSum(self, grid: List[List[int]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
+        max_sum = float("-inf")
+        
+        for row in range(rows-3+1): # +1 step for edge case
+            for col in range(1, cols-2+1): # +1 step for edge case
+                if row+2 <= rows and col+1 <= cols:
+                    ur = grid[row][col-1] + grid[row][col] + grid[row][col+1] #upper row
+                    mc = grid[row+1][col] #mid column
+                    lr = grid[row+2][col-1] + grid[row+2][col] + grid[row+2][col+1] #lower row
+                    curr_sum = ur+mc+lr
+                    max_sum = max(max_sum, curr_sum)
+        
+        return max_sum
+                
