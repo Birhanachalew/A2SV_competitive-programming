@@ -1,0 +1,12 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        firstsumm=0
+        secondsumm=sum(nums)
+        for i in range(len(nums)+1):
+            firstsumm+=i
+        if firstsumm>secondsumm:
+            return firstsumm-secondsumm
+      
+
+       
+      
