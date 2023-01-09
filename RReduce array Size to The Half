@@ -2,8 +2,10 @@ from collections import Counter
 class Solution:
     def minSetSize(self, arr: List[int]) -> int:
         H = len(arr) / 2
-        z= 0
+        z = 0
         for i, (num, count) in enumerate(Counter(arr).most_common()):
             z += count
             if z >= H:
                 return i + 1
+#time copmlexity = O(n)
+# space complexity = o(1)
