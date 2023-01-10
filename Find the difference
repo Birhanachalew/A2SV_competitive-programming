@@ -1,0 +1,16 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+
+        count1 = Counter(s)
+
+        for char in t:
+            count1[char] -=1
+        for char in t:
+            if count1[char] != 0:
+                return char
+       
+
+        
+
+
+        
