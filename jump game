@@ -1,0 +1,32 @@
+# intuition:
+# we can image the input as graph.
+# in example 1, starting from the root, we can reach the 2nd node and 3rd node
+# from the 2nd node, we can reach 3rd, 4th, and 5th
+# from the 3rd node, we can reach 4th
+# from the 4th node, we can reach 5th
+# from the 5th node, it is the desination, we don't need to jump
+# here we can put those on different level, i.e.
+# lv1: 2 
+# lv2: 1 3
+# lv3: 1 4
+# each level can be reachable from the previous level starting from 2nd level
+# each level contains the possible length of jump
+# the minimum number of jumps is the jump required to make from level 1
+
+
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        n = len(nums)
+		# cur_end: the ending index of the current level
+		# nxt_end: the ending index of the next level
+        cur_end, nxt_end = 0, 0
+        steps = 0
+        for i in range(n):
+			# if the current index is out of the current level, 
+			# we add 1 step because we are going to the next level
+            if i > cur_end:
+                steps += 1
+                cur_end = nxt_end
+            # update nxt_end - take the max index
+            nxt_end = max(nxt_end, i + nums[i])
+        return steps
