@@ -1,0 +1,20 @@
+class Solution {
+    List<Integer> vals;
+    public int minDiffInBST(TreeNode root) {
+        vals = new ArrayList();
+        dfs(root);
+
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < vals.size() - 1; ++i)
+            ans = Math.min(ans, vals.get(i+1) - vals.get(i));
+
+        return ans;
+    }
+
+    public void dfs(TreeNode node) {
+        if (node == null) return;
+        dfs(node.left);
+        vals.add(node.val);
+        dfs(node.right);
+    }
+}
