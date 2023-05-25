@@ -1,0 +1,20 @@
+class Solution:
+    def lemonadeChange(self, bills: List[int]) -> bool:
+        ind , n = 0, len(bills)
+        change = {5:0, 10:0}
+        while ind < n:
+            cur = bills[ind]
+            if cur == 5: change[5] += 1
+            elif cur == 10:
+                if change[5]:
+                    change[5] -= 1
+                    change[10] += 1
+                else: return False
+            else:
+                if change[10]  and change[5]:
+                    change[10] -= 1
+                    change[5]-=1
+                elif change[5]>=3: change[5] -= 3
+                else: return False
+            ind += 1
+        return True
