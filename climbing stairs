@@ -1,0 +1,41 @@
+
+        
+# class Solution:
+#     def climbStairs(self, n: int) -> int:
+#         if n <= 3:
+#             return n
+#         n1, n2 = 2, 3
+
+#         for i in range(4, n + 1):
+#             temp = n1 + n2
+#             n1 = n2
+#             n2 = temp
+#         return n2
+class Solution:
+    def climbStairs(self, n : int) ->int:
+        if n <= 3:
+            return n
+        step1 , step2 = 2, 3
+
+        # n = 1 : 1
+        # n = 2 : 2
+        # n = 3 : 3
+
+        # n = 4 : 2 + 3 ->store =  5
+        # step1 = 3
+        # step2 = 5
+
+        # n = 5 : 5 + 3 -> store = 8
+
+
+        for i in range(4, n + 1):
+            store = step1 + step2
+            step1 = step2
+            step2 = store
+        return step2
+
+
+
+
+
+
